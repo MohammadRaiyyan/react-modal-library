@@ -1,7 +1,7 @@
 {
   "name": "react-overlay-modal",
   "private": false,
-  "version": "0.1.0",
+  "version": "0.1.2",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -53,5 +53,14 @@
   },
   "lint-staged": {
     "**/*": "prettier --write --ignore-unknown"
-  }
+  },
+  "keywords": [
+    "React",
+    "React Modal",
+    "Modal",
+    "react-modal",
+    "Modal Overlay",
+    "Overlay"
+  ],
+  "license": "MIT"
 }
