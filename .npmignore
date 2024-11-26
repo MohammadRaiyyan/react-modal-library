@@ -1,0 +1,10 @@
+# Ignore unnecessary files
+node_modules/
+test/
+tests/
+coverage/
+examples/
+*.log
+*.lock
+.env
+src/
