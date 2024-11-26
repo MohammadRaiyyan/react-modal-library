@@ -25,7 +25,7 @@ createRoot(document.getElementById("root")!).render(
   </StrictMode>,
 )
 ```
-
+### Usage
 ```typescript jsx
 
 import { useModal } from "@raiyyan/react-overlay-modal"
