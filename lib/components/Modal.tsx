@@ -1,46 +1,83 @@
-import { ReactElement } from "react"
-import { motion } from "framer-motion"
-import { ModalConfig } from "../types"
+import React, { ReactElement, useCallback, useEffect, useState } from "react"
+import { ShowModalProps } from "../types"
 import classes from "./Modal.module.css"
-import { getModalSizes } from "../utils/getModalSizes.ts"
-import useModal from "../context/useModal.tsx"
+import useModal from "../context/useModal"
+import clsx from "clsx"
+import "../global.css"
 
-export default function Modal({
-  children,
-  config,
-}: {
-  children: ReactElement
-  config?: ModalConfig
-}) {
-  const { size = "md", disableOutsideClick = false } = config || {}
+export default function Modal(
+  props: Omit<ShowModalProps, "content"> & {
+    children: ReactElement
+    modalKey: string
+  },
+) {
+  const {
+    size = "md",
+    disableOutsideClick = false,
+    className = "",
+    bodyProps: { className: bodyClass = "", ...other } = {},
+    children,
+    modalKey,
+  } = props || {}
+
   const { closeModal } = useModal()
-  return (
-    <motion.div
-      className={classes.modal}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      onMouseDown={e => {
-        e.stopPropagation()
+  const [animationState, setAnimationState] = useState("")
+
+  // Run handler to close the modal on escape key press
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent<HTMLDivElement>) => {
+      e.stopPropagation()
+      if (e.key === "Escape") {
         if (!disableOutsideClick) {
           closeModal(e)
         }
-      }}
+      }
+    },
+    [closeModal, disableOutsideClick],
+  )
+  // Run handler on the modal to close the modal
+  const handleOutSideClick = useCallback(
+    (e: React.MouseEvent) => {
+      e.stopPropagation()
+      if (!disableOutsideClick) {
+        closeModal(e)
+      }
+    },
+    [closeModal, disableOutsideClick],
+  )
+
+  useEffect(() => {
+    // Let the modal mount in the dom properly then apply the enter animation class 10ms is enough for browser to paint
+    const timer = setTimeout(() => setAnimationState("enter"), 10)
+    return () => {
+      clearTimeout(timer)
+      setAnimationState("")
+    }
+  }, [])
+
+  return (
+    <div
+      className={clsx(classes.modal, className, `modal__${animationState}`)}
+      onMouseDown={handleOutSideClick}
+      onKeyDown={handleKeyDown}
+      role="presentation"
     >
-      <motion.div
-        initial={{ y: -50, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        exit={{ y: -50, opacity: 0 }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-        className={classes["modal--body"]}
-        style={{
-          ...getModalSizes({ size }),
-        }}
+      <div
+        data-dialog-key={modalKey}
+        className={clsx(
+          classes["body"],
+          classes[`__${size}`],
+          `body__${animationState}`,
+          bodyClass,
+        )}
         onMouseDown={e => e.stopPropagation()}
+        role="dialog"
+        aria-modal="true"
+        tabIndex={-1}
+        {...other}
       >
         {children}
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   )
 }

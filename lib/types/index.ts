@@ -1,4 +1,4 @@
-import { ReactElement, SyntheticEvent } from "react"
+import React, { ReactElement, SyntheticEvent } from "react"
 
 export type ModalSize =
   | "sm"
@@ -9,10 +9,31 @@ export type ModalSize =
   | "3xl"
   | "full"
   | { width: string; height: string }
-export type ModalConfig = { size?: ModalSize; disableOutsideClick?: boolean }
+
+type ModalBodyProps = {
+  className?: string
+  "aria-labelledby"?: string
+  "aria-describedby"?: string
+  "aria-hidden"?: boolean
+  "aria-live"?: "off" | "polite" | "assertive"
+  "aria-modal"?: boolean
+  "aria-role"?: string
+  tabIndex?: number
+  role?: string
+  onKeyDown?: React.KeyboardEventHandler<HTMLDivElement>
+  onFocus?: (event: React.FocusEvent) => void
+  id?: string
+  style?: React.CSSProperties
+  children?: React.ReactNode
+  onClick?: React.MouseEventHandler
+}
+
 export type ShowModalProps = {
-  config?: ModalConfig
   content: ReactElement
+  className?: string
+  bodyProps?: ModalBodyProps
+  size?: ModalSize
+  disableOutsideClick?: boolean
 }
 
 export type ContextProps = {

@@ -1,0 +1,17 @@
+.modal__enter {
+  opacity: 1;
+}
+
+.modal__exit {
+  opacity: 0;
+}
+
+.body__enter {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.body__exit {
+  transform: translateY(-50px);
+  opacity: 0;
+}

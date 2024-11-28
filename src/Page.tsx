@@ -1,7 +1,55 @@
-import { useModal } from "../"
+import { useModal } from "../lib/main.ts"
+
+function ModalContent3() {
+  const { closeModal } = useModal()
+  return (
+    <div className="test-modal">
+      praesentium ullam nesciunt tempore laborum animi ducimus? Omnis ad quo
+      expedita reiciendis possimus libero Lorem ipsum dolor sit amet consectetur
+      adipisicing elit. Laboriosam aperiam praesentium earum ducimus hic,
+      tempore ipsa dolorem iusto esse accusamus. Lorem ipsum dolor sit amet
+      <br />
+      <br />
+      <div className="action-container">
+        <button className="btn secondary" onClick={closeModal}>
+          Close
+        </button>
+      </div>
+    </div>
+  )
+}
+function ModalContent2() {
+  const { closeModal, showModal } = useModal()
+  return (
+    <div className="test-modal">
+      praesentium ullam nesciunt tempore laborum animi ducimus? Omnis ad quo
+      expedita reiciendis possimus libero Lorem ipsum dolor sit amet consectetur
+      adipisicing elit. Laboriosam aperiam praesentium earum ducimus hic,
+      tempore ipsa dolorem iusto esse accusamus. Lorem ipsum dolor sit amet
+      consectetur adipisicing elit. Adipisci nulla soluta, doloribus nam
+      expedita quia accusamus. Eaque nisi odio, repellendus dolorum excepturi
+      eligendi, vel, praesentium tenetur impedit ipsa odit cum!
+      <br />
+      <br />
+      <div className="action-container">
+        <button className="btn secondary" onClick={closeModal}>
+          Close
+        </button>
+        <button
+          className="btn primary"
+          onClick={() => {
+            showModal({ content: <ModalContent3 />, size: "sm" })
+          }}
+        >
+          Open New
+        </button>
+      </div>
+    </div>
+  )
+}
 
 function ModalContent() {
-  const { closeModal } = useModal()
+  const { closeModal, showModal } = useModal()
   return (
     <div className="test-modal">
       praesentium ullam nesciunt tempore laborum animi ducimus? Omnis ad quo
@@ -23,6 +71,14 @@ function ModalContent() {
         <button className="btn secondary" onClick={closeModal}>
           Close
         </button>
+        <button
+          className="btn primary"
+          onClick={() => {
+            showModal({ content: <ModalContent2 /> })
+          }}
+        >
+          Open New
+        </button>
       </div>
     </div>
   )
@@ -38,7 +94,7 @@ export default function Page() {
           onClick={() => {
             showModal({
               content: <ModalContent />,
-              config: { size: "2xl"},
+              size: "2xl",
             })
           }}
         >

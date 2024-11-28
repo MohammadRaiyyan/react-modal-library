@@ -21,9 +21,6 @@
     "format": "prettier . --write",
     "format:check": "prettier . --check"
   },
-  "dependencies": {
-    "framer-motion": "^11.11.17"
-  },
   "peerDependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
@@ -61,5 +58,8 @@
     "Modal Overlay",
     "Overlay"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "clsx": "^2.1.1"
+  }
 }
