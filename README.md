@@ -37,19 +37,11 @@ import { useModal } from "react-overlay-modal"
 function ModalContent() {
   const { closeModal } = useModal()
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">✨ Welcome to Cool Modal!</h2>
-
-      <p className="mb-4">
-        This is a super awesome modal component that you can use to create
-        magical user experiences. Customize it, style it, make it your own! 🚀
-      </p>
-
+    <div>
+      <h2>✨ Welcome to Cool Modal!</h2>
       <button
         onClick={closeModal}
-        className="px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500
-                  text-white rounded-full hover:opacity-90 transform hover:scale-105
-                  transition-all duration-200"
+        className="btn secondary"
       >
         ✨ Close Modal
       </button>
@@ -61,9 +53,7 @@ export default function Page() {
   const { showModal } = useModal()
   return (
     <button
-      className="px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500
-                 text-white rounded-full hover:opacity-90 transform hover:scale-105
-                 transition-all duration-200 font-bold"
+      className="btn primary"
       onClick={() => showModal({
         content: <ModalContent />,
         size: "md"
