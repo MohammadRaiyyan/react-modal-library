@@ -1,7 +1,7 @@
 {
   "name": "react-overlay-modal",
   "private": false,
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -58,5 +58,8 @@
     "Modal Overlay",
     "Overlay"
   ],
-  "license": "MIT"
+  "license": "MIT",
+  "author": "Mohammad Raiyyan",
+  "bugs": "raiyyan.work@gmail.com",
+  "description": "A minimalistic, super lightweight and accessible React modal library that offers\nrobust type safety. This headless solution gives you full flexibility to\nintegrate your own content and styles without worrying about z-index or complex\nconfigurations.",
 }

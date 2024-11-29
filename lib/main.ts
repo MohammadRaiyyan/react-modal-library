@@ -1,5 +1,5 @@
-import ModalProvider from "./context/ModalContext.tsx"
-import useModal from "./context/useModal.tsx"
+import ModalProvider from "./context/ModalContext"
+import useModal from "./context/useModal"
 import "./global.css"
 
 export { ModalProvider, useModal }

@@ -13,6 +13,10 @@ configurations.
 4. Typescript support for type safety.
 5. Minimal configuration with support for custom styling.
 
+## Demo
+
+[View the Demo](https://codesandbox.io/p/sandbox/r3hyh6)
+
 ### Install
 
 ```bash
