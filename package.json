@@ -1,7 +1,7 @@
 {
   "name": "react-overlay-modal",
   "private": false,
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "main": "dist/main.js",
   "types": "dist/main.d.ts",
@@ -14,7 +14,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b ./tsconfig.lib.json && vite build",
-    "lint": "eslint .",
+    "lint": "eslint . --ignore-pattern dist ",
     "preview": "vite preview",
     "prepublishOnly": "npm run build",
     "prepare": "husky",
@@ -58,8 +58,5 @@
     "Modal Overlay",
     "Overlay"
   ],
-  "license": "MIT",
-  "dependencies": {
-    "clsx": "^2.1.1"
-  }
+  "license": "MIT"
 }

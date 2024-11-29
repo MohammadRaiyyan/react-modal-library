@@ -2,7 +2,6 @@ import React, { ReactElement, useCallback, useEffect, useState } from "react"
 import { ShowModalProps } from "../types"
 import classes from "./Modal.module.css"
 import useModal from "../context/useModal"
-import clsx from "clsx"
 import "../global.css"
 
 export default function Modal(
@@ -57,19 +56,18 @@ export default function Modal(
 
   return (
     <div
-      className={clsx(classes.modal, className, `modal__${animationState}`)}
+      className={`${classes.modal} ${className} modal__${animationState}`}
       onMouseDown={handleOutSideClick}
       onKeyDown={handleKeyDown}
       role="presentation"
     >
       <div
         data-dialog-key={modalKey}
-        className={clsx(
-          classes["body"],
-          classes[`__${size}`],
-          `body__${animationState}`,
-          bodyClass,
-        )}
+        className={`${classes["body"]}
+           ${classes[`__${size}`]}
+            body__${animationState}
+            ${bodyClass}
+        `}
         onMouseDown={e => e.stopPropagation()}
         role="dialog"
         aria-modal="true"

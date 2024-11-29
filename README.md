@@ -5,6 +5,14 @@ robust type safety. This headless solution gives you full flexibility to
 integrate your own content and styles without worrying about z-index or complex
 configurations.
 
+## Features
+
+1. No dependencies other than React.
+2. Fully accessible with proper ARIA attributes.
+3. Lightweight and headless (no pre-applied styles).
+4. Typescript support for type safety.
+5. Minimal configuration with support for custom styling.
+
 ### Install
 
 ```bash
@@ -106,5 +114,4 @@ export default function Page() {
 | `onFocus`          | Optional focus event handler                                          |
 | `id`               | Optional string identifier                                            |
 | `style`            | Optional React CSS properties object                                  |
-| `children`         | Optional React child elements                                         |
 | `onClick`          | Optional mouse click event handler                                    |
