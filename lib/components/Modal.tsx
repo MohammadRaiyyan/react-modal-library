@@ -28,7 +28,7 @@ export default function Modal(
       e.stopPropagation()
       if (e.key === "Escape") {
         if (!disableOutsideClick) {
-          closeModal(e)
+          closeModal()
         }
       }
     },
@@ -39,7 +39,7 @@ export default function Modal(
     (e: React.MouseEvent) => {
       e.stopPropagation()
       if (!disableOutsideClick) {
-        closeModal(e)
+        closeModal()
       }
     },
     [closeModal, disableOutsideClick],
@@ -63,11 +63,7 @@ export default function Modal(
     >
       <div
         data-dialog-key={modalKey}
-        className={`${classes["body"]}
-           ${classes[`__${size}`]}
-            body__${animationState}
-            ${bodyClass}
-        `}
+        className={`${classes["body"]} ${classes[`__${size}`]} body__${animationState} ${bodyClass}`}
         onMouseDown={e => e.stopPropagation()}
         role="dialog"
         aria-modal="true"

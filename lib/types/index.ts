@@ -1,4 +1,4 @@
-import React, { ReactElement, SyntheticEvent } from "react"
+import React, { ReactElement } from "react"
 
 export type ModalSize =
   | "sm"
@@ -38,5 +38,5 @@ export type ShowModalProps = {
 
 export type ContextProps = {
   showModal: (props: ShowModalProps) => void
-  closeModal: (e: SyntheticEvent) => void
+  closeModal: () => void
 }

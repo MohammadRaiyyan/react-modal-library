@@ -2,7 +2,6 @@ import {
   Fragment,
   ReactElement,
   ReactNode,
-  SyntheticEvent,
   useCallback,
   useEffect,
   useMemo,
@@ -31,24 +30,20 @@ export default function ModalProvider({
     setOverlays(prev => [...prev, { modalKey, content: modal }])
   }, [])
 
-  const closeModal = useCallback(
-    (e: SyntheticEvent) => {
-      e.stopPropagation()
-      const lastModal = overlays.at(-1)
-      if (!lastModal) return
+  const closeModal = useCallback(() => {
+    const lastModal = overlays.at(-1)
+    if (!lastModal) return
 
-      const body = document.querySelector(
-        `[data-dialog-key="${lastModal.modalKey}"]`,
-      )
+    const body = document.querySelector(
+      `[data-dialog-key="${lastModal.modalKey}"]`,
+    )
 
-      body?.classList.add("body__exit")
-      body?.parentElement?.classList.add("modal__exit")
-      setTimeout(() => {
-        setOverlays(prev => prev.slice(0, -1))
-      }, 400)
-    },
-    [overlays],
-  )
+    body?.classList.add("body__exit")
+    body?.parentElement?.classList.add("modal__exit")
+    setTimeout(() => {
+      setOverlays(prev => prev.slice(0, -1))
+    }, 400)
+  }, [overlays])
 
   const actions = useMemo(() => {
     return {

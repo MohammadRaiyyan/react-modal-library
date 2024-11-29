@@ -1,4 +1,4 @@
-import { useModal } from "../"
+import { useModal } from "../lib/main.ts"
 
 function ModalContent3() {
   const { closeModal } = useModal()
